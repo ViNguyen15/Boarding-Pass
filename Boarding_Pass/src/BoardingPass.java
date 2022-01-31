@@ -47,6 +47,22 @@ public class BoardingPass {
 
     // The details should include valid data such as: name, email, phone number, gender, age, boarding pass number, date, origin, destination, estimated time of arrival (ETA), departure time.
 
+        //The input generated ETA and Ticket Price
+    public <expectedArrivalTime> Double generatedETA(double departureTime , double expectedArrivalTime){
+        /*
+        eta = expectedArrivalTime - departureTime
+         */
+        double eta = expectedArrivalTime - departureTime;
+
+        return eta;
+    }
+
+        //The computer must generate the boarding pass number
+        // ensuring the number is unique.
+    public void generatedBoardingPass(){
+
+    }
+
     @Override
     public String toString() {
         return "BoardingPass: {" +
