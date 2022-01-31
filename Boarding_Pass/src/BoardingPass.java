@@ -9,7 +9,7 @@ public class BoardingPass {
     // boarding pass info
     private String date;
     private String destination;
-    private String departmentTime;
+    private String departureTime;
 
     // generate
     private int boardingPassNumber;
@@ -19,7 +19,7 @@ public class BoardingPass {
 
 
     //	The user will be required to enter their Name, Email, Phone Number, Gender, Age, Date, Destination, and Departure Time into the console or GUI (teams’ preference).
-    public BoardingPass(String name, String email, String phone, String gender, int age, String date, String destination, String departmentTime) {
+    public BoardingPass(String name, String email, String phone, String gender, int age, String date, String destination, String departureTime) {
         this.name = name;
         this.email = email;
         this.phone = phone;
@@ -27,7 +27,7 @@ public class BoardingPass {
         this.age = age;
         this.date = date;
         this.destination = destination;
-        this.departmentTime = departmentTime;
+        this.departureTime = departureTime;
 
         this.boardingPassNumber = 1;
         this.price = "10.00";
@@ -57,7 +57,7 @@ public class BoardingPass {
                 ", age: " + age +
                 ", date: '" + date + '\'' +
                 ", destination: '" + destination + '\'' +
-                ", departmentTime: '" + departmentTime + '\'' +
+                ", departmentTime: '" + departureTime + '\'' +
                 ", boardingPassNumber: " + boardingPassNumber +
                 ", origin: '" + origin + '\'' +
                 ", eta: '" + eta + '\'' +
