@@ -11,10 +11,6 @@ public class BoardingPassTester {
                 pass1
         );
 
-        ArrayList<String> name = new ArrayList<>();
-        name.toString();
-
-
     }
 
 

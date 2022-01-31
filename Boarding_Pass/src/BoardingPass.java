@@ -40,7 +40,7 @@ public class BoardingPass {
         double price = 20;
 
         if(this.age <= 12 )
-            return price * 0.50;
+            return "" + (price * 0.50);
 
         return "0";
     }
