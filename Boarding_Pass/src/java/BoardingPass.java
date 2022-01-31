@@ -21,7 +21,8 @@ public class BoardingPass {
 
 
     //	The user will be required to enter their Name, Email, Phone Number, Gender, Age, Date, Destination, and Departure Time into the console or GUI (teams’ preference).
-    public BoardingPass(String name, String email, String phone, String gender, int age, String date, String destination, String departmentTime) {
+    public BoardingPass(String name, String email, String phone, String gender,
+                        int age, String date, String destination, String departmentTime) {
         this.name = name;
         this.email = email;
         this.phone = phone;
