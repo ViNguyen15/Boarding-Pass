@@ -1,4 +1,6 @@
+
 public class BoardingPass {
+
     // person info
     private String name;
     private String email;
@@ -29,27 +31,32 @@ public class BoardingPass {
         this.destination = destination;
         this.departmentTime = departmentTime;
 
+        //
         this.boardingPassNumber = 1;
-        this.price = "10.00";
+        this.price = calculatePrice();
         this.eta = "forever";
     }
-
 
     // calculate price
     public String calculatePrice(){
         double price = 20;
 
-        if(this.age <= 12 )
+        if( this.age <= 12 )
             return "" + (price * 0.50);
-
-        return "0";
+        if( this.age >= 60 )
+            return "" + (price * 0.60);
+        if( this.gender.equals("f") )
+            return "" + (price * 0.25);
+        return "" + price;
     }
 
-    // The details should include valid data such as: name, email, phone number, gender, age, boarding pass number, date, origin, destination, estimated time of arrival (ETA), departure time.
+    //
 
+
+    // The details should include valid data such as: name, email, phone number, gender, age, boarding pass number, date, origin, destination, estimated time of arrival (ETA), departure time.
     @Override
     public String toString() {
-        return "BoardingPass: {" +
+        return "java.BoardingPassTester.BoardingPass: {" +
                 " name: '" + name + '\'' +
                 ", email: '" + email + '\'' +
                 ", phone: '" + phone + '\'' +
@@ -64,4 +71,5 @@ public class BoardingPass {
                 ", price: '" + price + '\'' +
                 " }";
     }
+
 }
