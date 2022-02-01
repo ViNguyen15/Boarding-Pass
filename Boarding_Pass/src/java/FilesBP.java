@@ -5,11 +5,14 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class FilesBP {
     static Charset utf8 = StandardCharsets.UTF_8;
     static Path path = Paths.get("src/resources/boarding_pass_data");
+
 
     public void createAFile() throws IOException {
         if( !Files.exists(path) )
@@ -32,13 +35,27 @@ public class FilesBP {
     }
 
 
-    public void readFromFile() {
+    public List<String> readFromFile() {
         try {
-            Files.readAllLines(
+            return Files.readAllLines(
                     path
             );
         } catch (IOException e){
             System.out.println("Error: readFromFile failed");
+            return new ArrayList<>();
+        }
+
+    }
+
+    public static void main(String[] args) {
+        FilesBP bp = new FilesBP();
+
+
+        int count = 0;
+        for(String x : bp.readFromFile().get(0).split("'") ) {
+            if(count % 2 == 1)
+                System.out.println(x);
+            count++;
         }
 
     }

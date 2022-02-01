@@ -139,7 +139,6 @@ public class BoardingPass {
     // calculate price
     public String calculatePrice(){
         double price = 20;
-
         if( this.age <= 12 )
             return "" + (price * 0.50);
         if( this.age >= 60 )
@@ -155,7 +154,7 @@ public class BoardingPass {
     // The details should include valid data such as: name, email, phone number, gender, age, boarding pass number, date, origin, destination, estimated time of arrival (ETA), departure time.
     @Override
     public String toString() {
-        return "java.BoardingPassTester.BoardingPass: {" +
+        return "BoardingPass{" +
                 " name: '" + name + '\'' +
                 ", email: '" + email + '\'' +
                 ", phone: '" + phone + '\'' +

@@ -18,7 +18,7 @@ public class BoardingPassTester {
         FilesBP file = new FilesBP();
         try {
             file.writeToFile(pass1);
-        }catch (IOException e){
+        } catch (IOException e){
             System.out.println("Error");
         }
 
