@@ -1,4 +1,5 @@
 import org.junit.Before;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -19,5 +20,12 @@ class BoardingPassTest {
     public void calculatePriceTest(){
         assertEquals("20.0", testPass.calculatePrice(), "Error: calculatePrice failed");
     }
+
+    @Test
+    public void generateBPNumberTest(){
+
+    }
+
+
 
 }

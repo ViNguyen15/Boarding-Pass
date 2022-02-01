@@ -33,7 +33,7 @@ public class BoardingPass {
         this.departmentTime = departmentTime;
 
         //
-        this.boardingPassNumber = 1;
+        this.boardingPassNumber = generateBPNumber();
         this.price = calculatePrice();
         this.eta = "forever";
     }
@@ -148,7 +148,15 @@ public class BoardingPass {
         return "" + price;
     }
 
-    //
+    // should generate unique number
+    public int generateBPNumber(){
+        return new FilesBP().readFromFile().size() + 1;
+    }
+
+    //generate eta
+    public int generateETA(){
+        return 5;
+    }
 
 
     // The details should include valid data such as: name, email, phone number, gender, age, boarding pass number, date, origin, destination, estimated time of arrival (ETA), departure time.
