@@ -19,9 +19,10 @@ public class FilesBP {
             Files.createFile(path);
     }
 
-    public void writeToFile(BoardingPass pass) throws IOException {
-        createAFile();
+    public void writeToFile(BoardingPass pass) {
+
         try {
+            createAFile();
             Files.write(
                     path,
                     Arrays.asList(pass.toString()),
