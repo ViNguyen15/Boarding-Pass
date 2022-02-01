@@ -7,7 +7,7 @@ public class BoardingPassTester {
 
 
         BoardingPass pass1 = new BoardingPass("Jimmy",
-                "Fluffy", "404", "m", 21,
+                "Fluffy@gmail.com", "404", "m", 21,
                 "now", "there", "now");
 
         System.out.println(

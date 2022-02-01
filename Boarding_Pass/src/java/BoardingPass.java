@@ -158,7 +158,6 @@ public class BoardingPass {
         return 5;
     }
 
-
     // The details should include valid data such as: name, email, phone number, gender, age, boarding pass number, date, origin, destination, estimated time of arrival (ETA), departure time.
     @Override
     public String toString() {
