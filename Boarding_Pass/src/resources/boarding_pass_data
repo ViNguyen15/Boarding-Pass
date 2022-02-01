@@ -1,0 +1,1 @@
+java.BoardingPassTester.BoardingPass: { name: 'Jimmy', email: 'Fluffy', phone: '404', gender: 'm', age: 21, date: 'now', destination: 'there', departmentTime: 'now', boardingPassNumber: 1, origin: 'null', eta: 'forever', price: '20.0' }
