@@ -17,7 +17,7 @@ class BoardingPassTest {
 
     @Test
     public void calculatePriceTest(){
-        assertEquals(20, testPass.calculatePrice(), "Error: calculatePrice failed");
+        assertEquals("20.0", testPass.calculatePrice(), "Error: calculatePrice failed");
     }
 
 }
