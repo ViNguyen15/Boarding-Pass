@@ -11,7 +11,7 @@ public class BoardingPass {
     // boarding pass info
     private String date;
     private String destination;
-    private String departmentTime;
+    private String departureTime;
 
     // generate
     private int boardingPassNumber;
@@ -22,7 +22,7 @@ public class BoardingPass {
 
     //	The user will be required to enter their Name, Email, Phone Number, Gender, Age, Date, Destination, and Departure Time into the console or GUI (teams’ preference).
     public BoardingPass(String name, String email, String phone, String gender,
-                        int age, String date, String destination, String departmentTime) {
+                        int age, String date, String destination, String departureTime) {
         this.name = name;
         this.email = email;
         this.phone = phone;
@@ -30,7 +30,7 @@ public class BoardingPass {
         this.age = age;
         this.date = date;
         this.destination = destination;
-        this.departmentTime = departmentTime;
+        this.departureTime = departureTime;
 
         //
         this.boardingPassNumber = generateBPNumber();
@@ -95,12 +95,12 @@ public class BoardingPass {
         this.destination = destination;
     }
 
-    public String getDepartmentTime() {
-        return departmentTime;
+    public String getDepartureTime() {
+        return departureTime;
     }
 
-    public void setDepartmentTime(String departmentTime) {
-        this.departmentTime = departmentTime;
+    public void setDepartureTime(String departureTime) {
+        this.departureTime = departureTime;
     }
 
     public int getBoardingPassNumber() {
@@ -124,6 +124,7 @@ public class BoardingPass {
     }
 
     public void setEta(String eta) {
+
         this.eta = eta;
     }
 
@@ -154,8 +155,46 @@ public class BoardingPass {
     }
 
     //generate eta
-    public int generateETA(){
-        return 5;
+    public String generateETA( int speed, String distance){
+        /*
+
+         */
+
+        StringBuilder result = new StringBuilder();
+
+        char[] endPoint =distance.toCharArray();
+        int location = 0;
+        for (
+                int i = 0;
+                i < endPoint.length; i++) {
+            int x
+                    = location * 10
+                    + Character.getNumericValue(
+                    endPoint[i]);
+            result.append(x / speed);
+            location = x % speed;
+        }
+
+        // Remove any leading zeros
+        for (
+                int i = 0;
+                i < result.length(); i++) {
+            if (
+                    result.charAt(i) != '0') {
+                return result.substring(i);
+            }
+            return "";
+            //We can call the numbers in main. This code goes to main
+//            public static void main(String[] args){
+//                String distance
+//                        = "124812";  //remember distance  == destination
+//
+//                int speed = 25;
+//                System.out.println(
+//                        generateETA(
+//                                distance, speed));
+            }
+        return result.toString();
     }
 
     // The details should include valid data such as: name, email, phone number, gender, age, boarding pass number, date, origin, destination, estimated time of arrival (ETA), departure time.
@@ -169,7 +208,7 @@ public class BoardingPass {
                 ", age: " + age +
                 ", date: '" + date + '\'' +
                 ", destination: '" + destination + '\'' +
-                ", departmentTime: '" + departmentTime + '\'' +
+                ", departmentTime: '" + departureTime + '\'' +
                 ", boardingPassNumber: " + boardingPassNumber +
                 ", origin: '" + origin + '\'' +
                 ", eta: '" + eta + '\'' +
