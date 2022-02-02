@@ -72,7 +72,7 @@ public class Main {
         destinationLabel.setText("Destination");
         destinationLabel.setBounds(windowX - fieldX * 3, fieldY * 7, fieldX, fieldY);
 
-        //depature time
+        //departure time
         departTimeField = new JTextField();
         departTimeField.setBounds(windowX - fieldX * 2, fieldY * 8, fieldX, fieldY);
         departTimeLabel = new JLabel();
