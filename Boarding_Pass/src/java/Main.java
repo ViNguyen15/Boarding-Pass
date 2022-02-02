@@ -1,6 +1,4 @@
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class Main {
     static int windowX = 500;
@@ -22,7 +20,7 @@ public class Main {
         int fieldX = 150;
         int fieldY = 25;
 
-        // textfields and label
+        // text-fields and label
         //name
         nameField = new JTextField();
         nameField.setBounds(windowX - fieldX * 2, fieldY * 1, fieldX, fieldY);
@@ -73,7 +71,7 @@ public class Main {
         destinationLabel.setText("Destination");
         destinationLabel.setBounds(windowX - fieldX * 3, fieldY * 7, fieldX, fieldY);
 
-        //depature time
+        //departure time
         departTimeField = new JTextField();
         departTimeField.setBounds(windowX - fieldX * 2, fieldY * 8, fieldX, fieldY);
         departTimeLabel = new JLabel();
