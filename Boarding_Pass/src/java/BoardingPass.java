@@ -180,7 +180,7 @@ public class BoardingPass {
                     result.charAt(i) != '0') {
                 return result.substring(i);
             }
-            return "";
+           // return "";
             //We can call the numbers in main. This code goes to main
 //            public static void main(String[] args){
 //                String distance

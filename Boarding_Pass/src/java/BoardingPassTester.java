@@ -14,6 +14,8 @@ public class BoardingPassTester {
                 pass1.toString()
         );
 
+        System.out.println("ETA: " + pass1.generateETA( 25, "1235")+"mins. ");
+
 
         FilesBP file = new FilesBP();
         file.writeToFile(pass1);
