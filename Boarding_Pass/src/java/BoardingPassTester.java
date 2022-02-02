@@ -17,6 +17,9 @@ public class BoardingPassTester {
         System.out.println(
                 pass1.generateETA(25, "125")
         );
+
+        System.out.println("ETA: " + pass1.generateETA( 25, "1235")+"mins. ");
+        
     }
 
 
