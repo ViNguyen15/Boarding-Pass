@@ -210,7 +210,7 @@ public class BoardingPass {
                 ", departmentTime: '" + departureTime + '\'' +
                 ", boardingPassNumber: " + boardingPassNumber +
                 ", origin: '" + origin + '\'' +
-                ", eta: '" + eta + '\'' +
+                ", eta: '" + eta + "mins" + '\'' +
                 ", price: '" + price + '\'' +
                 " }";
     }
