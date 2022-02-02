@@ -12,7 +12,17 @@ import java.util.List;
 public class FilesBP {
     static Charset utf8 = StandardCharsets.UTF_8;
     static Path path = Paths.get("src/resources/boarding_pass_data");
+    static ArrayList<Integer> bpID = new ArrayList<>();
 
+    public FilesBP() {
+        allID();
+    }
+
+    public static void allID(){
+        for(String boardingPass : readFromFile() ) {
+            bpID.add( Integer.parseInt( boardingPass.split("'")[16] ) );
+        }
+    }
 
     public void createAFile() throws IOException {
         if( !Files.exists(path) )
@@ -35,8 +45,7 @@ public class FilesBP {
         }
     }
 
-
-    public List<String> readFromFile() {
+    static public List<String> readFromFile() {
         try {
             return Files.readAllLines(
                     path
@@ -52,13 +61,8 @@ public class FilesBP {
         FilesBP bp = new FilesBP();
 
 
-        int count = 0;
-        for(String x : bp.readFromFile().get(0).split("'") ) {
-            if(count % 2 == 1)
-                System.out.println(x);
-            count++;
-        }
-
     }
+
+
 
 }

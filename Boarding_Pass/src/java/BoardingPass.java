@@ -1,3 +1,4 @@
+import java.io.File;
 import java.util.Locale;
 
 public class BoardingPass {
@@ -144,17 +145,24 @@ public class BoardingPass {
     public String calculatePrice(){
         double price = 20;
         if( this.age <= 12 )
-            return "" + (price * 0.50);
+            return "" + (price - (price * 0.50) );
         if( this.age >= 60 )
-            return "" + (price * 0.60);
+            return "" + (price - (price * 0.60) );
         if( this.gender.toLowerCase().charAt(0) == 'f')
-            return "" + (price * 0.25);
+            return "" + (price - (price * 0.25) );
         return "" + price;
     }
 
     // should generate unique number
     public int generateBPNumber(){
-        return new FilesBP().readFromFile().size() + 1;
+        if(new FilesBP().bpID.isEmpty()) return 1;
+
+        int max = 0;
+        for(int num : new FilesBP().bpID){
+            if (num > max)
+                max = num;
+        }
+        return max + 1;
     }
 
     //generate eta
@@ -205,11 +213,11 @@ public class BoardingPass {
                 ", email: '" + email + '\'' +
                 ", phone: '" + phone + '\'' +
                 ", gender: '" + gender + '\'' +
-                ", age: " + age +
+                ", age: '" + age + '\'' +
                 ", date: '" + date + '\'' +
                 ", destination: '" + destination + '\'' +
                 ", departmentTime: '" + departureTime + '\'' +
-                ", boardingPassNumber: " + boardingPassNumber +
+                ", boardingPassNumber: '" + boardingPassNumber + '\'' +
                 ", origin: '" + origin + '\'' +
                 ", eta: '" + eta + "mins" + '\'' +
                 ", price: '" + price + '\'' +

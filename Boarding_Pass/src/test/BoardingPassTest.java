@@ -15,6 +15,17 @@ class BoardingPassTest {
                 "now", "there", "now");
     }
 
+    @Test
+    public void getNameTest(){
+        assertEquals("Jimmy",testPass.getName(),"Error: getName failed");
+    }
+
+    @Test
+    public void setNameTest(){
+        testPass.setName("Joey");
+        assertEquals("Joey", testPass.getName(), "Error: setName failed");
+    }
+
 
     @Test
     public void calculatePriceTest(){
