@@ -11,7 +11,7 @@ import java.util.List;
 
 public class FilesBP {
     static Charset utf8 = StandardCharsets.UTF_8;
-    static Path path = Paths.get("src/resources/boarding_pass_data");
+    static Path path = Paths.get("src/resources/boarding_pass_data.txt");
     static ArrayList<Integer> bpID = new ArrayList<>();
 
     public FilesBP() {
