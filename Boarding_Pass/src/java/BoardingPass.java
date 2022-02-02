@@ -20,9 +20,11 @@ public class BoardingPass {
     private String price;
 
 
-    //	The user will be required to enter their Name, Email, Phone Number, Gender, Age, Date, Destination, and Departure Time into the console or GUI (teams’ preference).
+    //	The user will be required to enter their Name, Email, Phone Number, Gender, Age, Date, Destination,
+    //	and Departure Time into the console or GUI (teams’ preference).
     public BoardingPass(String name, String email, String phone, String gender,
                         int age, String date, String destination, String departureTime) {
+        // user input
         this.name = name;
         this.email = email;
         this.phone = phone;
@@ -32,10 +34,10 @@ public class BoardingPass {
         this.destination = destination;
         this.departureTime = departureTime;
 
-        //
+        // auto generated
         this.boardingPassNumber = generateBPNumber();
         this.price = calculatePrice();
-        this.eta = "forever";
+        this.eta = generateETA(25, "1235");
     }
 
     //region getter and setters
