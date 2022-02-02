@@ -54,6 +54,7 @@ public class Main {
         //age
         ageField = new JTextField();
         ageField.setBounds(windowX - fieldX * 2, fieldY * 5, fieldX, fieldY);
+        ageField.setText("0");
         ageLabel = new JLabel();
         ageLabel.setText("Age");
         ageLabel.setBounds(windowX - fieldX * 3, fieldY * 5, fieldX, fieldY);
@@ -79,7 +80,9 @@ public class Main {
         departTimeLabel.setText("Departure Time");
         departTimeLabel.setBounds(windowX - fieldX * 3, fieldY * 8, fieldX, fieldY);
 
-
+        //message
+        JLabel warning = new JLabel();
+        warning.setBounds(windowX - fieldX * 3, fieldY * 10, fieldX*2, fieldY);
 
         //button
         int bSizeX = 100;
@@ -92,15 +95,30 @@ public class Main {
             String email = emailField.getText();
             String phone = phoneField.getText();
             String gender = genderField.getText();
-            int age = Integer.parseInt( ageField.getText() );
             String date = dateField.getText();
             String destination = destinationField.getText();
             String departureTime = departTimeField.getText();
+            int age;
+            try {
+                age = Integer.parseInt(ageField.getText());
+            }catch (Exception bad){
+                System.out.println("Not a number");
+                age = 0;
+            }
 
-            BoardingPass bp = new BoardingPass(name,email,phone,gender,age,date,destination,departureTime);
-            new FilesBP().writeToFile(bp);
-            frame.dispose();
+            if(name.isEmpty()||email.isEmpty()||phone.isEmpty()||gender.isEmpty()||
+                    date.isEmpty()||destination.isEmpty()||departureTime.isEmpty()||age<=0) {
 
+                warning.setText("Please do not leave anything blank!");
+
+                if(age<=0)
+                    warning.setText("age needs to be a number");
+
+            } else {
+                BoardingPass bp = new BoardingPass(name, email, phone, gender, age, date, destination, departureTime);
+                new FilesBP().writeToFile(bp);
+                frame.dispose();
+            }
         });
 
 
@@ -132,12 +150,14 @@ public class Main {
 
         frame.add( btn );
 
+        frame.add( warning );
 
         frame.setLayout(null);
         frame.setVisible(true);
 
-
     }
+
+
 
 
 
