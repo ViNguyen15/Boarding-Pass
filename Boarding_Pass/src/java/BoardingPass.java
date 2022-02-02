@@ -1,3 +1,4 @@
+import java.util.Locale;
 
 public class BoardingPass {
 
@@ -146,7 +147,7 @@ public class BoardingPass {
             return "" + (price * 0.50);
         if( this.age >= 60 )
             return "" + (price * 0.60);
-        if( this.gender.equals("f") )
+        if( this.gender.toLowerCase().charAt(0) == 'f')
             return "" + (price * 0.25);
         return "" + price;
     }
@@ -214,5 +215,6 @@ public class BoardingPass {
                 ", price: '" + price + '\'' +
                 " }";
     }
+
 
 }

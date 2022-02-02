@@ -11,7 +11,7 @@ public class BoardingPassTester {
                 "now", "there", "now");
 
         System.out.println(
-                pass1.toString()
+                pass1
         );
 
         System.out.println(

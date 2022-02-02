@@ -11,11 +11,55 @@ public class Main {
 
     public static void main(String[] args) {
 
-        JFrame frame = new JFrame("Boarding Pass");
-        frame.setSize(windowX,windowY);
+        customerFillOut();
+
+
+    }
+
+    public static void infoDisplay(BoardingPass pass){
+        JFrame frame = new JFrame("Receipt");
+        JLabel ty = new JLabel();
+        JLabel eta = new JLabel();
+        JLabel priceLabel = new JLabel();
+        JButton btn = new JButton("OK");
+        int fieldX = 150;
+        int fieldY = 25;
+
+        frame.setSize(windowX/4*3,windowY/4*3);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 
+        ty.setText("Thank You " + pass.getName() + ", for your patience.");
+        ty.setBounds(windowX - fieldX * 3, fieldY * 1, fieldX * 2, fieldY * 2);
+
+        eta.setText("Your estimated time arrival is: " + pass.getEta() + " minutes.");
+        eta.setBounds(windowX - fieldX * 3, fieldY * 3, fieldX * 2, fieldY * 2);
+
+        priceLabel.setText("Your total price is: $" + String.format("%.2f", Double.parseDouble(pass.getPrice())));
+        priceLabel.setBounds(windowX - fieldX * 3, fieldY * 5, fieldX * 2, fieldY * 2);
+
+        int bSizeX = 100;
+        int bSizeY = 25;
+        btn.setBounds(windowX/4,fieldY * 8, bSizeX, bSizeY);
+
+        btn.addActionListener( action -> {
+            frame.dispose();
+        });
+
+        frame.add( ty );
+        frame.add( eta );
+        frame.add( priceLabel );
+        frame.add( btn );
+
+        frame.setLayout( null );
+        frame.setVisible( true );
+
+    }
+
+    public static void customerFillOut(){
+        JFrame frame = new JFrame("Boarding Pass Fill Out Sheet");
+        frame.setSize(windowX,windowY);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         int fieldX = 150;
         int fieldY = 25;
@@ -116,10 +160,9 @@ public class Main {
                 BoardingPass bp = new BoardingPass(name, email, phone, gender, age, date, destination, departureTime);
                 new FilesBP().writeToFile(bp);
                 frame.dispose();
+                infoDisplay(bp);
             }
         });
-
-
 
         //adding stuff to frame
         frame.add( nameField );
@@ -150,11 +193,9 @@ public class Main {
 
         frame.add( warning );
 
-        frame.setLayout(null);
-        frame.setVisible(true);
-
+        frame.setLayout( null );
+        frame.setVisible( true );
     }
-
 
 
 
