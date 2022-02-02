@@ -156,9 +156,6 @@ public class BoardingPass {
 
     //generate eta
     public String generateETA( int speed, String distance){
-        /*
-
-         */
 
         StringBuilder result = new StringBuilder();
 
