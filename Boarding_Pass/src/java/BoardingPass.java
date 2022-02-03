@@ -1,5 +1,9 @@
 import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Locale;
+import java.util.Scanner;
 
 public class BoardingPass {
 
@@ -25,7 +29,7 @@ public class BoardingPass {
     //	The user will be required to enter their Name, Email, Phone Number, Gender, Age, Date, Destination,
     //	and Departure Time into the console or GUI (teams’ preference).
     public BoardingPass(String name, String email, String phone, String gender,
-                        int age, String date, String destination, String departureTime) {
+                        int age, String date, String origin, String destination, String departureTime) {
         // user input
         this.name = name;
         this.email = email;
@@ -33,15 +37,16 @@ public class BoardingPass {
         this.gender = gender;
         this.age = age;
         this.date = date;
+        this.origin = origin;
         this.destination = destination;
         this.departureTime = departureTime;
 
         // auto generated
         this.boardingPassNumber = generateBPNumber();
         this.price = calculatePrice();
-        this.eta = generateETA(25, "1235");
+        this.eta = generateETA(origin, destination);
 
-        this.origin = "here";
+
     }
 
     //region getter and setters
@@ -205,6 +210,32 @@ public class BoardingPass {
 //                                distance, speed));
             }
         return result.toString();
+    }
+
+    // newer generate ETA using web-scrape with travelmath
+    public String generateETA(String origin, String destination){
+        String address = String.format( "https://www.travelmath.com/flying-time/from/%s/to/%s",origin,destination );
+        URL pageLocation = null;
+        Scanner in = null;
+        String eta = "";
+        try {
+            pageLocation = new URL(address);
+            in = new Scanner(pageLocation.openStream());
+        } catch ( MalformedURLException e ) {
+            e.printStackTrace();
+        } catch ( IOException e ) {
+            e.printStackTrace();
+        }
+
+        while( in.hasNext() ){
+            String line = in.nextLine();
+            if( line.contains("id=\"flyingtime\"" )) {
+                int from = line.indexOf(">");
+                int to = line.indexOf("</h3>");
+                eta = line.substring(from + 1, to);
+            }
+        }
+        return eta;
     }
 
     // The details should include valid data such as: name, email, phone number, gender, age, boarding pass number, date, origin, destination, estimated time of arrival (ETA), departure time.

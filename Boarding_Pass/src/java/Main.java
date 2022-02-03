@@ -4,10 +4,28 @@ public class Main {
     static int windowX = 500;
     static int windowY = 400;
     static JTextField nameField, emailField, phoneField, genderField,
-            ageField, dateField, destinationField, departTimeField;
+            ageField, dateField, departTimeField;
 
     static JLabel nameLabel, emailLabel, phoneLabel, genderLabel,
-        ageLabel, dateLabel, destinationLabel, departTimeLabel;
+        ageLabel, dateLabel, destinationLabel, departTimeLabel, originLabel;
+
+    static JComboBox originBox, destinationBox;
+
+    final static String[] places = {
+             "Alabama", "Alaska", "Arizona", "Arkansas"
+            ,"California","Colorado","Connecticut"
+            ,"Delaware","Florida","Georgia","Hawaii"
+            ,"Idaho","Illinois","Indiana","Iowa"
+            ,"Kansas","Kentucky","Louisiana","Maine"
+            ,"Maryland","Massachusetts","Michigan","Minnesota"
+            ,"Mississippi","Missouri","MontanaNebraska","Nevada"
+            ,"New Hampshire","New Jersey","New Mexico","New York"
+            ,"North Carolina","North Dakota","Ohio","Oklahoma"
+            ,"Oregon","Pennsylvania","Rhode Island","South Carolina"
+            ,"South Dakota","Tennessee","Texas","Utah"
+            ,"Vermont","Virginia","Washington","West Virginia"
+            ,"Wisconsin","Wyoming"
+    };
 
     // responsible for producing receipts
     public static void infoDisplay(BoardingPass pass){
@@ -19,7 +37,7 @@ public class Main {
         int fieldX = 150;
         int fieldY = 25;
 
-        frame.setSize(windowX/4*3,windowY/4*3);
+        frame.setSize(windowX/4*3 + 50,windowY/4*3);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         ty.setText("Thank You " + pass.getName() + ", for your patience.");
@@ -103,19 +121,28 @@ public class Main {
         dateLabel.setText("Date");
         dateLabel.setBounds(windowX - fieldX * 3, fieldY * 6, fieldX, fieldY);
 
+        //origin
+        originBox = new JComboBox(places);
+        originBox.setBounds(windowX - fieldX * 2, fieldY * 7, fieldX, fieldY);
+        originBox.setSelectedIndex(9);
+        originLabel = new JLabel();
+        originLabel.setText("Origin");
+        originLabel.setBounds(windowX - fieldX * 3, fieldY * 7, fieldX, fieldY);
+
         //destination
-        destinationField = new JTextField();
-        destinationField.setBounds(windowX - fieldX * 2, fieldY * 7, fieldX, fieldY);
+        destinationBox = new JComboBox(places);
+        destinationBox.setBounds(windowX - fieldX * 2, fieldY * 8, fieldX, fieldY);
+        destinationBox.setSelectedIndex(9);
         destinationLabel = new JLabel();
         destinationLabel.setText("Destination");
-        destinationLabel.setBounds(windowX - fieldX * 3, fieldY * 7, fieldX, fieldY);
+        destinationLabel.setBounds(windowX - fieldX * 3, fieldY * 8, fieldX, fieldY);
 
         //departure time
         departTimeField = new JTextField();
-        departTimeField.setBounds(windowX - fieldX * 2, fieldY * 8, fieldX, fieldY);
+        departTimeField.setBounds(windowX - fieldX * 2, fieldY * 9, fieldX, fieldY);
         departTimeLabel = new JLabel();
         departTimeLabel.setText("Departure Time");
-        departTimeLabel.setBounds(windowX - fieldX * 3, fieldY * 8, fieldX, fieldY);
+        departTimeLabel.setBounds(windowX - fieldX * 3, fieldY * 9, fieldX, fieldY);
 
         //message
         JLabel warning = new JLabel();
@@ -134,7 +161,8 @@ public class Main {
             String phone = phoneField.getText();
             String gender = genderField.getText();
             String date = dateField.getText();
-            String destination = destinationField.getText();
+            String origin = originBox.getSelectedItem().toString();
+            String destination = destinationBox.getSelectedItem().toString();
             String departureTime = departTimeField.getText();
             int age;
             try {
@@ -153,7 +181,7 @@ public class Main {
                     warning.setText("age needs to be a number");
 
             } else {
-                BoardingPass bp = new BoardingPass(name, email, phone, gender, age, date, destination, departureTime);
+                BoardingPass bp = new BoardingPass(name, email, phone, gender, age, date, origin ,destination, departureTime);
                 new FilesBP().writeToFile(bp);
                 frame.dispose();
                 infoDisplay(bp);
@@ -182,7 +210,10 @@ public class Main {
         frame.add( dateField );
         frame.add( dateLabel );
 
-        frame.add( destinationField );
+        frame.add( originBox );
+        frame.add( originLabel );
+
+        frame.add( destinationBox );
         frame.add( destinationLabel );
 
         frame.add( departTimeField );
