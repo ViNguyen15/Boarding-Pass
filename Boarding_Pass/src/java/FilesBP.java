@@ -20,7 +20,7 @@ public class FilesBP {
 
     public static void allID(){
         for(String boardingPass : readFromFile() ) {
-            bpID.add( Integer.parseInt( boardingPass.split("'")[16] ) );
+            bpID.add( Integer.parseInt( boardingPass.split("'")[17] ) );
         }
     }
 
@@ -60,7 +60,9 @@ public class FilesBP {
     public static void main(String[] args) {
         FilesBP bp = new FilesBP();
 
-
+        for(String boardingPass : readFromFile() ) {
+            System.out.println( ( boardingPass.split("'")[17] ) );
+        }
     }
 
 

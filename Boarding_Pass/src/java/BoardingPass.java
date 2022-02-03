@@ -40,6 +40,8 @@ public class BoardingPass {
         this.boardingPassNumber = generateBPNumber();
         this.price = calculatePrice();
         this.eta = generateETA(25, "1235");
+
+        this.origin = "here";
     }
 
     //region getter and setters
