@@ -1,2 +1,4 @@
 BoardingPass{ name: 'essien', email: 'bassey@gmail.com', phone: '8326650611', gender: 'm', age: '47', date: '2/2/2022', destination: 'Detroit', departmentTime: '12:00', boardingPassNumber: '5', origin: 'null', eta: '49mins', price: '20.0' }
 BoardingPass{ name: 'Magnus', email: 'Carlson@chess.com', phone: '1111111111', gender: 'male', age: '10', date: 'today', destination: 'over there', departmentTime: 'now', boardingPassNumber: '6', origin: 'null', eta: '49mins', price: '10.0' }
+BoardingPass{ name: 'Mochi', email: 'Mochi@pup.edu', phone: '321', gender: 'puppy', age: '1', date: '2/2/2022', destination: 'home', departmentTime: '7:25', boardingPassNumber: '7', origin: 'here', eta: '49mins', price: '10.0' }
+BoardingPass{ name: 'Ham', email: 'Tubz@YoungShepard.com', phone: '18003210000', gender: 'unknown', age: '10', date: '2/2/2022', destination: 'Japan', departmentTime: '3', boardingPassNumber: '8', origin: 'here', eta: '49mins', price: '10.0' }

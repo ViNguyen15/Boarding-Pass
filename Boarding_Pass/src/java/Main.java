@@ -12,8 +12,6 @@ public class Main {
     public static void main(String[] args) {
 
         customerFillOut();
-
-
     }
 
     public static void infoDisplay(BoardingPass pass){
@@ -64,6 +62,7 @@ public class Main {
         int fieldX = 150;
         int fieldY = 25;
 
+        //region Components
         // text-fields and label
         //name
         nameField = new JTextField();
@@ -132,6 +131,7 @@ public class Main {
         JButton btn = new JButton("Submit");
         btn.setBounds(windowX - bSizeX * 2,windowY - bSizeY * 4,bSizeX,bSizeY);
 
+        //event handler
         btn.addActionListener(e -> {
             String name = nameField.getText();
             String email = emailField.getText();
@@ -164,6 +164,9 @@ public class Main {
             }
         });
 
+        //endregion
+
+        //region adding to frames
         //adding stuff to frame
         frame.add( nameField );
         frame.add( nameLabel );
@@ -192,6 +195,8 @@ public class Main {
         frame.add( btn );
 
         frame.add( warning );
+
+        //endregion
 
         frame.setLayout( null );
         frame.setVisible( true );
