@@ -9,11 +9,7 @@ public class Main {
     static JLabel nameLabel, emailLabel, phoneLabel, genderLabel,
         ageLabel, dateLabel, destinationLabel, departTimeLabel;
 
-    public static void main(String[] args) {
-
-        customerFillOut();
-    }
-
+    // responsible for producing receipts
     public static void infoDisplay(BoardingPass pass){
         JFrame frame = new JFrame("Receipt");
         JLabel ty = new JLabel();
@@ -25,7 +21,6 @@ public class Main {
 
         frame.setSize(windowX/4*3,windowY/4*3);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
 
         ty.setText("Thank You " + pass.getName() + ", for your patience.");
         ty.setBounds(windowX - fieldX * 3, fieldY * 1, fieldX * 2, fieldY * 2);
@@ -54,8 +49,9 @@ public class Main {
 
     }
 
+    // responsible for customer fill-out sheet
     public static void customerFillOut(){
-        JFrame frame = new JFrame("Boarding Pass Fill Out Sheet");
+        JFrame frame = new JFrame("Boarding Pass Fill-Out Sheet");
         frame.setSize(windowX,windowY);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -202,7 +198,7 @@ public class Main {
         frame.setVisible( true );
     }
 
-
-
-
+    public static void main(String[] args) {
+        customerFillOut();
+    }
 }
