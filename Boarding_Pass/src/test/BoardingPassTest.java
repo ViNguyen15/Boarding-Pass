@@ -11,7 +11,7 @@ class BoardingPassTest {
     void setUp(){
         testPass = new BoardingPass("Jimmy",
                 "Fluffy", "404", "m", 21,
-                "now", "there", "now");
+                "now", "here", "there", "now");
     }
 
     @Test
