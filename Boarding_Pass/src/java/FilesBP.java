@@ -85,10 +85,38 @@ public class FilesBP {
 
     }
 
+    // use to update existing textfile
+    public void reWriteFile(){
+        try {
+            Files.write(
+                    path, Arrays.asList( allBP.get(0).toString() ),
+                    utf8, StandardOpenOption.TRUNCATE_EXISTING
+            );
+        } catch (IOException e){
+            System.out.println("Error: writeToFile failed");
+            e.printStackTrace();
+        }
+
+        for (int i = 1; i < allBP.size(); i++){
+            try {
+                Files.write(
+                        path, Arrays.asList( allBP.get(i).toString() ),
+                        utf8, StandardOpenOption.APPEND
+                );
+            } catch (IOException e){
+                System.out.println("Error: writeToFile failed");
+                e.printStackTrace();
+            }
+        }
+
+    }
+
     public static void main(String[] args) {
         FilesBP file = new FilesBP();
 
-        allBP.stream().forEach(a -> System.out.println(a.getEmail()));
+        //allBP.stream().forEach(a -> System.out.println(a.getEmail()));
+        //file.reWriteFile();
+
     }
 
 

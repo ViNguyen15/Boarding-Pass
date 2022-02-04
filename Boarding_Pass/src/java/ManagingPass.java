@@ -3,10 +3,13 @@ import javax.swing.*;
 public class ManagingPass {
     FilesBP file = new FilesBP();
     BoardingPass selectedPass;
+    int selectedNumber;
 
+    // user picks which boarding pass base on their number
     public void selectionMenu(){
         int height = 200;
         int width = 200;
+
         JFrame frame = new JFrame();
         frame.setTitle("Update Selection");
         frame.setSize(width,height);
@@ -17,7 +20,6 @@ public class ManagingPass {
         JLabel selectionLabel = new JLabel();
         selectionLabel.setText("Select the Boarding Pass ID");
         selectionLabel.setBounds((height - lblX)/2,0, lblX, lblY);
-
 
         String[] choices = new String[file.allBP.size()];
         for(int i = 0; i < choices.length; i++){
@@ -30,9 +32,11 @@ public class ManagingPass {
 
         JButton editBtn = new JButton("edit");
         editBtn.setBounds(65 ,height - boxY*5, 70, boxY);
-        editBtn.addActionListener( e->{
-            this.selectedPass = file.allBP.get(selectionBox.getSelectedIndex());
-            System.out.println(this.selectedPass);
+        editBtn.addActionListener( e -> {
+            this.selectedPass = file.allBP.get( selectionBox.getSelectedIndex() );
+            this.selectedNumber = selectionBox.getSelectedIndex();
+            toEditMenu();
+            frame.dispose();
         });
 
         frame.add( editBtn );
@@ -43,9 +47,9 @@ public class ManagingPass {
 
     }
 
+    // window for updating information
     public void toEditMenu(){
         JFrame menu = new JFrame();
-        selectedPass = file.allBP.get(0);
 
         menu.setTitle("Edit Boarding Pass Menu");
         menu.setSize(500,800);
@@ -84,15 +88,33 @@ public class ManagingPass {
         JTextField departTimeField = fieldComponent(String.valueOf(selectedPass.getDepartureTime()), 580);
         JLabel departTimeLabel = fieldLabel("Departure Time: ", 580);
 
-        JTextField boardPassNumField = fieldComponent(String.valueOf(selectedPass.getBoardingPassNumber()), 630);
-        JLabel boardPassNumLabel = fieldLabel("Boarding Pass Number: ", 630);
+        JLabel boardPassNumLabel = new JLabel(
+                "Boarding Pass Number: " + selectedPass.getBoardingPassNumber());
+        boardPassNumLabel.setBounds(150,30,200,30);
 
         JButton updateBtn = new JButton("Update");
         updateBtn.setBounds(200,700,100,30);
         //endregion
 
+        // update button gets clicked will save changes to textfile
         updateBtn.addActionListener( e -> {
-            System.out.println(nameField.getText());
+            selectedPass.setName( nameField.getText() );
+            selectedPass.setGender( genderField.getText() );
+            selectedPass.setEmail( emailField.getText() );
+            selectedPass.setPhone( phoneField.getText() );
+            selectedPass.setDate( dateField.getText() );
+            selectedPass.setDepartureTime( departTimeField.getText() );
+            selectedPass.setAge( Integer.parseInt( ageField.getText() ) );
+            selectedPass.setEta( etaField.getText() );
+            selectedPass.setPrice( priceField.getText() );
+            selectedPass.setOrigin( originField.getText() );
+            selectedPass.setDestination( destinationField.getText() );
+
+            file.allBP.set(this.selectedNumber, this.selectedPass);
+
+            file.reWriteFile();
+            menu.dispose();
+            JOptionPane.showMessageDialog(menu,"File has been Updated");
         });
 
         // region adding all components
@@ -118,7 +140,6 @@ public class ManagingPass {
         menu.add( priceLabel );
         menu.add( departTimeField );
         menu.add( departTimeLabel );
-        menu.add( boardPassNumField );
         menu.add( boardPassNumLabel );
 
         menu.add( updateBtn );
@@ -128,6 +149,7 @@ public class ManagingPass {
         menu.setVisible( true );
     }
 
+    // textfield automation
     public JTextField fieldComponent( String toChange, int y){
         int x = 200;
         JTextField field = new JTextField();
@@ -136,6 +158,7 @@ public class ManagingPass {
         return field;
     }
 
+    // label automation
     public JLabel fieldLabel(String name, int y){
         JLabel label = new JLabel();
         label.setText(name);
@@ -146,7 +169,7 @@ public class ManagingPass {
     public static void main(String[] args) {
         ManagingPass mp = new ManagingPass();
 
-        //mp.selectionMenu();
-        mp.toEditMenu();
+        mp.selectionMenu();
+
     }
 }
