@@ -43,7 +43,7 @@ public class Main {
         ty.setText("Thank You " + pass.getName() + ", for your patience.");
         ty.setBounds(windowX - fieldX * 3, fieldY * 1, fieldX * 2, fieldY * 2);
 
-        eta.setText("Your estimated time arrival is: " + pass.getEta() + " minutes.");
+        eta.setText("Your estimated time of arrival is: " + pass.getEta() + " minutes.");
         eta.setBounds(windowX - fieldX * 3, fieldY * 3, fieldX * 2, fieldY * 2);
 
         priceLabel.setText("Your total price is: $" + String.format("%.2f", Double.parseDouble(pass.getPrice())));
