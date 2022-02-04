@@ -4,6 +4,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Locale;
 import java.util.Scanner;
+import java.util.stream.Stream;
 
 public class BoardingPass {
 
@@ -43,10 +44,27 @@ public class BoardingPass {
 
         // auto generated
         this.boardingPassNumber = generateBPNumber();
-        this.price = calculatePrice();
+        this.price = calculatePrice(50);
         this.eta = generateETA(origin, destination);
 
 
+    }
+
+    public BoardingPass(String name, String email, String phone, String gender,
+                        int age, String date, String destination, String departureTime,
+                        int boardingPassNumber, String origin, String eta, String price) {
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.gender = gender;
+        this.age = age;
+        this.date = date;
+        this.destination = destination;
+        this.departureTime = departureTime;
+        this.boardingPassNumber = boardingPassNumber;
+        this.origin = origin;
+        this.eta = eta;
+        this.price = price;
     }
 
     //region getter and setters
@@ -149,15 +167,15 @@ public class BoardingPass {
     //endregion
 
     // calculate price
-    public String calculatePrice(){
-        double price = 20;
+    public String calculatePrice(double price){
+
         if( this.age <= 12 )
             return "" + (price - (price * 0.50) );
         if( this.age >= 60 )
             return "" + (price - (price * 0.60) );
         if( this.gender.toLowerCase().charAt(0) == 'f')
             return "" + (price - (price * 0.25) );
-        return "" + price;
+        return String.format( "%.2f", price);
     }
 
     // should generate unique number
@@ -235,7 +253,8 @@ public class BoardingPass {
                 eta = line.substring(from + 1, to);
             }
         }
-        return eta;
+
+        return eta.replace(",","");
     }
 
     // The details should include valid data such as: name, email, phone number, gender, age, boarding pass number, date, origin, destination, estimated time of arrival (ETA), departure time.
@@ -252,7 +271,7 @@ public class BoardingPass {
                 ", departmentTime: '" + departureTime + '\'' +
                 ", boardingPassNumber: '" + boardingPassNumber + '\'' +
                 ", origin: '" + origin + '\'' +
-                ", eta: '" + eta + "mins" + '\'' +
+                ", eta: '" + eta + '\'' +
                 ", price: '" + price + '\'' +
                 " }";
     }

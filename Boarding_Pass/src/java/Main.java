@@ -187,7 +187,6 @@ public class Main {
                 infoDisplay(bp);
             }
         });
-
         //endregion
 
         //region adding to frames
@@ -222,7 +221,6 @@ public class Main {
         frame.add( btn );
 
         frame.add( warning );
-
         //endregion
 
         frame.setLayout( null );
