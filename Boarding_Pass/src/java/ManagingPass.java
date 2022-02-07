@@ -42,6 +42,8 @@ public class ManagingPass {
         frame.add( editBtn );
         frame.add( selectionLabel );
         frame.add( selectionBox );
+
+        frame.setLocationRelativeTo(null);
         frame.setLayout( null );
         frame.setVisible( true );
 
@@ -145,6 +147,7 @@ public class ManagingPass {
         menu.add( updateBtn );
         // endregion
 
+        menu.setLocationRelativeTo(null);
         menu.setLayout( null );
         menu.setVisible( true );
     }
@@ -166,10 +169,4 @@ public class ManagingPass {
         return label;
     }
 
-    public static void main(String[] args) {
-        ManagingPass mp = new ManagingPass();
-
-        mp.selectionMenu();
-
-    }
 }
