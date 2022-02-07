@@ -49,7 +49,7 @@ After boarding pass number have been selected the User will be able to edit any 
 </p>
 
 <p align="center">
-  <img src="boarding_pass_documentation/testFile_editted.PNG">
+  <img src="boarding_pass_documentation/textFile_editted.PNG">
 </p>
 
 
